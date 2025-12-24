@@ -12,6 +12,8 @@
 
 ## 🏗️ Architecture
 
+![Agent T Architecture](assets/architecture_diagram.png)
+
 1.  **Caller** dials the Azure Phone Number.
 2.  **ACS** sends an `IncomingCall` webhook to the **Agent T Server**.
 3.  **Server** answers the call and starts the **Azure AI Speech** recognizer.
