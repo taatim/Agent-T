@@ -117,7 +117,8 @@ python run_agent.py
 
 ### Backlog
 - [ ] **Outbound Calling**: The ability for Agent T to call *them* and hold the line.
-- [ ] **Appointment Negotiation**: Smart logic to refuse "default" slots and negotiate for the correct time window (e.g., "No, the doctor said 3 weeks").
+- [ ] **Appointment Negotiation**: Smart logic to refuse "default" slots and negotiate for the correct time window.
+- [ ] **Privacy-First PII Protection**: When asked for sensitive info (SSN, DoB), the Agent **pauses** and waits for your input. *It never stores this data*, acting only as a secure voice relay.
 - [ ] **"Fight Agent with Agent"**: A mode specifically tuned to navigate IVR trees, bypass basic bots, and reach a human scheduler.
 - [ ] **Creating Human Agency**: Tools that give the user superpowers—like "Escalate to Manager" detection or "Record for Evidence."
 
