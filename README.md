@@ -1,6 +1,20 @@
 # Agent T: Human-in-the-Loop Voice Agent 🤖📞
 
-**Agent T** is a sophisticated voice agent built with Python, Azure Communication Services (ACS), and Azure AI. It features a **"Human-in-the-Loop" (HITL)** architecture, allowing a human operator to monitor live calls via a web dashboard, read real-time transcriptions, and type responses that are instantly spoken back to the caller.
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python&logoColor=white)
+![Azure](https://img.shields.io/badge/Azure-Communication%20Services-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
+![OpenAI](https://img.shields.io/badge/AI-Azure%20OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+
+> **The Ultimate Real-Time AI Voice Assistant with Human Oversight.**
+> *Seamlessly blend AI speed with human empathy.*
+
+**Agent T** is a state-of-the-art voice agent built with **Python**, **Azure Communication Services (ACS)**, and **Azure AI**. It features a revolutionary **"Human-in-the-Loop" (HITL)** architecture, allowing a human operator to monitor live calls via a real-time web dashboard, read instant transcriptions, and intervene by typing responses that are synthesized into natural speech immediately.
+
+## 🚀 Why Agent T? (Use Cases)
+*   **Customer Support**: AI handles the greeting, human takes over for complex resolution.
+*   **Sales Coaching**: Managers can whisper or take over calls in real-time.
+*   **High-Stakes Dispatch**: Emergency services where AI transcribes but humans verify every word.
+*   **Language Translation**: Real-time speech-to-text-to-speech translation bridge.
 
 ## 🌟 Features
 
@@ -50,7 +64,7 @@ Create a `.env` file in the root directory (copy `env.example` if available) and
 ```ini
 # Azure Communication Services
 ACS_CONNECTION_STRING="your_acs_connection_string"
-ACS_PHONE_NUMBER="+1833xxxxxxx"
+ACS_PHONE_NUMBER="+1XXXXXXXXX"
 
 # Callback URI (Will be auto-updated by run_agent.py if using ngrok)
 CALLBACK_URI_HOST="https://your-ngrok-url.ngrok-free.app"
@@ -93,3 +107,6 @@ python run_agent.py
 
 ## 📜 License
 [MIT](LICENSE)
+
+## 🏷️ Tags & Keywords
+`Voice Agent`, `Human-in-the-Loop`, `HITL`, `Azure Communication Services`, `Azure OpenAI`, `GPT-4o`, `Real-time AI`, `Speech-to-Text`, `Text-to-Speech`, `Python`, `FastAPI`, `WebSockets`, `Customer Experience`, `Voice AI`, `Conversational AI`, `Telephony`, `Twilio Alternative`, `AI Copilot`.
