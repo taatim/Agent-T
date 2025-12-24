@@ -9,3 +9,4 @@ debug_agent_v2.log
 *.log
 test_speech_resource.py
 debug_stt_direct.py
+docs/
