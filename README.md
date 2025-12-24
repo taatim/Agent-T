@@ -108,5 +108,18 @@ python run_agent.py
 ## 📜 License
 [MIT](LICENSE)
 
+
+## 🔮 Future Roadmap: The "Human Agency" Mission
+
+**Why this exists**: The story is personal. I called a patient appointment scheduling system, was connected to an AI agent, and it failed to schedule my 3-week follow-up. Instead, it assumed I was a new patient and gave me an appointment **3 months away**.
+
+**Agent T is the counter-measure.** It is designed to fight "Bad AI" with "Good AI," restoring human agency in a world of automated gatekeepers.
+
+### Backlog
+- [ ] **Outbound Calling**: The ability for Agent T to call *them* and hold the line.
+- [ ] **Appointment Negotiation**: Smart logic to refuse "default" slots and negotiate for the correct time window (e.g., "No, the doctor said 3 weeks").
+- [ ] **"Fight Agent with Agent"**: A mode specifically tuned to navigate IVR trees, bypass basic bots, and reach a human scheduler.
+- [ ] **Creating Human Agency**: Tools that give the user superpowers—like "Escalate to Manager" detection or "Record for Evidence."
+
 ## 🏷️ Tags & Keywords
 `Voice Agent`, `Human-in-the-Loop`, `HITL`, `Azure Communication Services`, `Azure OpenAI`, `GPT-4o`, `Real-time AI`, `Speech-to-Text`, `Text-to-Speech`, `Python`, `FastAPI`, `WebSockets`, `Customer Experience`, `Voice AI`, `Conversational AI`, `Telephony`, `Twilio Alternative`, `AI Copilot`.
