@@ -120,6 +120,7 @@ python run_agent.py
 - [ ] **Appointment Negotiation**: Smart logic to refuse "default" slots and negotiate for the correct time window.
 - [ ] **Privacy-First PII Protection**: When asked for sensitive info (SSN, DoB), the Agent **pauses** and waits for your input. *It never stores this data*, acting only as a secure voice relay.
 - [ ] **"Fight Agent with Agent"**: A mode specifically tuned to navigate IVR trees, bypass basic bots, and reach a human scheduler.
+- [ ] **Transactional Capabilities**: Expand beyond scheduling to handle payments, reservations, and complex multi-turn transactions.
 - [ ] **Creating Human Agency**: Tools that give the user superpowers—like "Escalate to Manager" detection or "Record for Evidence."
 
 ## 🏷️ Tags & Keywords
