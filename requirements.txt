@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+azure-communication-callautomation
+azure-cognitiveservices-speech
+openai
+websockets
+python-dotenv
+aiohttp
+requests
+azure-cli>=2.50.0
+pyngrok

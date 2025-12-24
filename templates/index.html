@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent T - Human Copilot</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #e6edf3;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 95vh;
+        }
+
+        header {
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #58a6ff;
+        }
+
+        #status-pill {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            background: #21262d;
+            border: 1px solid #30363d;
+        }
+
+        .connected {
+            color: #2ea043;
+            border-color: #238636 !important;
+        }
+
+        .disconnected {
+            color: #f85149;
+            border-color: #da3633 !important;
+        }
+
+        /* Chat Container */
+        #chat-container {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-right: 10px;
+        }
+
+        .message {
+            padding: 10px 15px;
+            border-radius: 8px;
+            max-width: 80%;
+            line-height: 1.4;
+        }
+
+        .system {
+            align-self: center;
+            color: #8b949e;
+            font-size: 0.8em;
+            font-style: italic;
+        }
+
+        .remote {
+            align-self: flex-start;
+            background: #21262d;
+            border: 1px solid #30363d;
+            color: #c9d1d9;
+        }
+
+        .agent {
+            align-self: flex-end;
+            background: #1f6feb;
+            color: white;
+        }
+
+        .agent-automated {
+            align-self: flex-end;
+            background: #238636;
+            color: white;
+            opacity: 0.9;
+        }
+
+        /* Input Area with Integrated Button */
+        #input-area {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type=text] {
+            flex: 1;
+            padding: 15px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: white;
+            font-size: 1em;
+            outline: none;
+        }
+
+        input[type=text]:focus {
+            border-color: #58a6ff;
+        }
+
+        button {
+            padding: 0 25px;
+            background: #238636;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background: #2ea043;
+        }
+
+        button:disabled {
+            background: #21262d;
+            color: #8b949e;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Agent T: Copilot</h1>
+        <div id="status-pill" class="disconnected">● Disconnected</div>
+    </header>
+
+    <div id="chat-container">
+        <div class="message system">Waiting for connection...</div>
+    </div>
+
+    <div id="input-area">
+        <input type="text" id="humanInput" placeholder="Type response to speak..." autocomplete="off">
+        <button id="sendBtn" onclick="sendInput()">SPEAK</button>
+    </div>
+
+    <script>
+        const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+        const ws = new WebSocket(`${wsProtocol}//${location.host}/ws`);
+
+        const chatContainer = document.getElementById("chat-container");
+        const statusPill = document.getElementById("status-pill");
+        const inputField = document.getElementById("humanInput");
+        const sendBtn = document.getElementById("sendBtn");
+
+        ws.onopen = () => {
+            statusPill.innerHTML = "● Connected";
+            statusPill.className = "connected";
+            addSystemMessage("System connected. Ready for calls.");
+        };
+
+        ws.onmessage = (event) => {
+            const msg = JSON.parse(event.data);
+
+            if (msg.type === "transcript") {
+                const text = msg.data;
+                if (text.startsWith("Remote:")) {
+                    addMessage("remote", text.replace("Remote: ", ""));
+                } else if (text.startsWith("Agent:")) {
+                    addMessage("agent", text.replace("Agent: ", ""));
+                } else if (text.startsWith("System:")) {
+                    addSystemMessage(text.replace("System: ", ""));
+                } else {
+                    addSystemMessage(text);
+                }
+            }
+        };
+
+        ws.onclose = () => {
+            statusPill.innerHTML = "● Disconnected";
+            statusPill.className = "disconnected";
+            addSystemMessage("Connection lost.");
+        };
+
+        function sendInput() {
+            const text = inputField.value.trim();
+            if (text) {
+                // Send as specialized input event
+                ws.send(JSON.stringify({ type: "input", data: text }));
+                inputField.value = "";
+            }
+        }
+
+        function addMessage(type, text) {
+            const div = document.createElement("div");
+            div.className = `message ${type}`;
+            div.innerText = text;
+            chatContainer.appendChild(div);
+            scrollToBottom();
+        }
+
+        function addSystemMessage(text) {
+            const div = document.createElement("div");
+            div.className = "message system";
+            div.innerText = text;
+            chatContainer.appendChild(div);
+            scrollToBottom();
+        }
+
+        function scrollToBottom() {
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // Enter key to send
+        inputField.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                sendInput();
+            }
+        });
+    </script>
+</body>
+
+</html>

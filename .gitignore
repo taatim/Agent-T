@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+ngrok
+ngrok_token.txt
+debug_agent_v2.log
+*.log
+test_speech_resource.py
+debug_stt_direct.py

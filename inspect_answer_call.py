@@ -1,0 +1,2 @@
+from azure.communication.callautomation import CallAutomationClient
+print(CallAutomationClient.answer_call.__doc__)
